@@ -16,7 +16,7 @@ class Api::V1::TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    head :no_content
+    render json: Task.all
   end
 
 	private
