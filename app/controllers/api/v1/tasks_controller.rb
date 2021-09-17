@@ -6,7 +6,7 @@ class Api::V1::TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      render :index, status: :created
+      render json: @task, status: :created
     else
       render_error
     end
