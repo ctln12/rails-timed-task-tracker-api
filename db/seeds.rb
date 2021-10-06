@@ -8,6 +8,6 @@ Task.create!(name: 'Meditate', completed: true)
 Task.create!(name: 'Build first project')
 
 puts 'Create 1 initial setting...'
-Setting.create!(focus_time: 25, short_break: 5, long_break: 15, number_sessions: 4)
+Setting.create!(focus_time: 25, short_break: 5, long_break: 15, number_sessions: 4, duration: 25)
 
 puts 'Finished'
