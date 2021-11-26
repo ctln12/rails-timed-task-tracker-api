@@ -20,7 +20,7 @@ class Api::V1::SettingsController < ApplicationController
   end
 
   def setting_params
-    params.require(:setting).permit(:focus_time, :short_break, :long_break, :number_sessions)
+    params.require(:setting).permit(:focus_time, :short_break, :long_break, :number_sessions, :duration, :focusing, :session_count)
   end
 
   def render_error
