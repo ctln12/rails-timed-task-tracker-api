@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2021_11_27_205121) do
 
   create_table "sessions", force: :cascade do |t|
     t.boolean "completed", default: false, null: false
-    t.json "settings"
-    t.bigint "task_id", null: false
+    t.jsonb "settings"
+    t.bigint "task_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["task_id"], name: "index_sessions_on_task_id"
