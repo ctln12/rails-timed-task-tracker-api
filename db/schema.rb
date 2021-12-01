@@ -10,21 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_06_125215) do
+ActiveRecord::Schema.define(version: 2021_11_27_205121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "settings", force: :cascade do |t|
-    t.integer "focus_time"
-    t.integer "short_break"
-    t.integer "long_break"
-    t.integer "number_sessions"
+  create_table "sessions", force: :cascade do |t|
+    t.boolean "completed", default: false, null: false
+    t.jsonb "settings"
+    t.bigint "task_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "duration"
-    t.boolean "focusing", default: true
-    t.integer "session_count", default: 0
+    t.index ["task_id"], name: "index_sessions_on_task_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -34,4 +31,5 @@ ActiveRecord::Schema.define(version: 2021_10_06_125215) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "sessions", "tasks"
 end
