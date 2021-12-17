@@ -44,7 +44,7 @@ module Api
       end
 
       def task_params
-        params.require(:task).permit(:name, :done)
+        params.require(:task).permit(:name, :done, :pomodoros, :completed)
       end
 
       def render_error
