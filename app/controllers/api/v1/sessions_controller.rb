@@ -4,6 +4,12 @@ module Api
   module V1
     # Controller to handle the requests made on the sessions table and that produces json
     class SessionsController < ApplicationController
+      before_action :set_sessions, only: :index
+
+      def index
+        render json: @sessions
+      end
+
       def update
         @session = Session.find(params[:id])
         if @session.update(session_params)
@@ -14,6 +20,10 @@ module Api
       end
 
       private
+
+      def set_sessions
+        @sessions = Session.all
+      end
 
       def session_params
         params.require(:session).permit(
