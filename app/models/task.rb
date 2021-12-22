@@ -9,6 +9,6 @@ class Task < ApplicationRecord
   private
 
   def create_session
-    Session.create! task: self
+    Session.create! task: self, completed: done
   end
 end

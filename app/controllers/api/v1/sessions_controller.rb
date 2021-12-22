@@ -23,6 +23,11 @@ module Api
         end
       end
 
+      def current
+        @next_session = Task.where(done: false).first.sessions.where(completed: false).first
+        render json: @next_session
+      end
+
       private
 
       def set_session
