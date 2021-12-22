@@ -4,7 +4,7 @@ module Api
   module V1
     # Controller to handle the requests made on the sessions table and that produces json
     class SessionsController < ApplicationController
-      before_action :set_task, only: %i[show update]
+      before_action :set_session, only: %i[show update]
 
       def index
         @sessions = Session.all
@@ -25,7 +25,7 @@ module Api
 
       private
 
-      def set_task
+      def set_session
         @session = Session.find(params[:id])
       end
 
