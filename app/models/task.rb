@@ -4,7 +4,7 @@ class Task < ApplicationRecord
   validates :name, presence: true
   validates_inclusion_of :done, in: [true, false]
 
-  after_save :create_session
+  after_create :create_session
 
   private
 
