@@ -24,7 +24,14 @@ module Api
       end
 
       def current
-        @next_session = Task.where(done: false).first.sessions.where(completed: false).first
+        @next_session =
+          if Task.count.zero? && Session.count.zero?
+            Session.create
+          elsif Task.count.zero?
+            Session.first
+          else
+            Task.where(done: false).first.sessions.where(completed: false).first
+          end
         render json: @next_session
       end
 
