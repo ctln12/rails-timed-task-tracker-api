@@ -4,10 +4,10 @@ module Api
   module V1
     # Controller to handle the requests made on the tasks table and that produces json
     class TasksController < ApplicationController
-      before_action :set_tasks, only: %i[index update destroy]
       before_action :set_task, only: %i[update destroy]
 
       def index
+        @tasks = Task.all.order('created_at')
         render json: @tasks
       end
 
@@ -34,10 +34,6 @@ module Api
       end
 
       private
-
-      def set_tasks
-        @tasks = Task.all.order('created_at')
-      end
 
       def set_task
         @task = Task.find(params[:id])
